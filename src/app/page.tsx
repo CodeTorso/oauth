@@ -4,6 +4,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
+
 export default function HomePage() {
   const session = useSession();
   return (
@@ -17,18 +18,16 @@ export default function HomePage() {
       }</div>
       <div className="flex justify-center py-32">
       {
-        session.data?.user?  <User session={session.data?.user} /> : null
+        session.data?  <User session={session.data?.user} /> : null
       }
       </div>
     </div>
   );
 }
 
-interface userProps {
-  name:string, email:string, image:string
-}
 
-function User({session}: {session: userProps}){
+
+function User({session}: {session: any}){
   const {name, email, image} = session; 
   return (
     <div className="rounded-lg py-6 px-12 bg-gray-500 text-white flex flex-col items-center gap-1">
