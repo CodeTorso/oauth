@@ -36,8 +36,8 @@ interface userProps {
 }
 }
 
-function User({user}: userProps){
-  const {name, email, image} = user; 
+function User({session}: userProps){
+  const {name, email, image} = session; 
   return (
     <div className="rounded-lg py-6 px-12 bg-gray-500 text-white flex flex-col items-center gap-1">
       <Image className="rounded-md" height={100} width={100} src={image ?? ""} alt={name ?? ""} />
