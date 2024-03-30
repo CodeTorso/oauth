@@ -2,10 +2,10 @@ import { redirect } from "next/navigation";
 import SignInButtons from "~/components/signInButtons";
 import { getServerAuthSession } from "~/server/auth";
 
-export default async function Dashboard({searchParams,}: {
-    searchParams: { [key: string]: string | string[] | undefined }
+export default async function Dashboard({searchParams}: {
+    searchParams: { [key: string]: string | undefined }
   }) {
-  const callbackError = searchParams.callbackUrl
+  const callbackError = searchParams.callbackUrl || undefined
   const session = await getServerAuthSession();
   session?.user && redirect("/") 
 
