@@ -3,9 +3,9 @@ import SignInButtons from "~/components/signInButtons";
 import { getServerAuthSession } from "~/server/auth";
 
 export default async function Dashboard({searchParams}: {
-    searchParams: { [key: string]: string | undefined }
+    searchParams: { callbackUrl?: string | undefined, error?: string | undefined}
   }) {
-  const callbackError = searchParams.callbackUrl || undefined
+  const callbackError = searchParams.callbackUrl ?? undefined
   const session = await getServerAuthSession();
   session?.user && redirect("/") 
 
