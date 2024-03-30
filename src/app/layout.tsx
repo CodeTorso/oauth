@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}><Providers> {children}</Providers></body>
+      <body className={`font-sans ${inter.variable}`}><Providers>{children}</Providers></body>
     </html>
   );
 }

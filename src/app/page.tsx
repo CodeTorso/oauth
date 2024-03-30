@@ -1,25 +1,26 @@
-"use client"
-import { signIn, signOut, useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
+import SignOutButton from "~/components/signOut";
+import { getServerAuthSession } from "~/server/auth";
 
+export default async function HomePage() {
+  const session = await getServerAuthSession()
+  !(session?.user) && redirect("/sign-in")
 
-export default function HomePage() {
-  const session = useSession();
-
-  console.log(session);
+  // const session = useSession();
+  // console.log(session);
 
   return (
     <div>
       
       <div className="flex justify-end px-20">
-      { session.data?.user? <button onClick={()=> signOut()}>SignOut</button>:
-      <button onClick={()=> signIn()}>SignIn</button>
-      }</div>
-
+        <SignOutButton />
+      </div>
 
       <div className="flex justify-center py-32">
       {
-        session.data?.user?  <User session={session.data?.user} /> : "Please Sign In"
+        session?.user &&  <User session={session?.user} />
       }
       </div>
 
