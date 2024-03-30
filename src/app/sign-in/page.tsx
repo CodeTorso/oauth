@@ -30,7 +30,7 @@ export default async function Dashboard({searchParams}: {
       </div>
       <div className="hidden bg-muted lg:block">
         <div
-          className="py-32 px-12 gap-4 flex flex-col justify-end items-end text-white h-full w-full bg-black object-cover dark:brightness-[0.2] dark:grayscale"
+          className="py-32 px-12 gap-4 flex flex-col justify-end items-end text-white  h-full w-full bg-black object-cover "
         >
             <h1 className="font-semibold text-4xl">We prioritise safety over everything</h1>
             <h1 className="text-xl italic">- Stockton Rush</h1>

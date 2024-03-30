@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import SignOutButton from "~/components/signOut";
+import { ModeToggle } from "~/components/themeToggler";
 import { getServerAuthSession } from "~/server/auth";
 
 export default async function HomePage() {
@@ -14,7 +15,8 @@ export default async function HomePage() {
   return (
     <div>
       
-      <div className="flex justify-end px-20">
+      <div className="gap-5 flex justify-end px-20">
+        <ModeToggle />
         <SignOutButton />
       </div>
 
@@ -40,10 +42,10 @@ interface userProps {
 function User({session}: userProps){
   const {name, email, image} = session; 
   return (
-    <div className="rounded-lg py-6 px-12 bg-gray-500 text-white flex flex-col items-center gap-1">
-      <Image className="rounded-md" height={100} width={100} src={image ?? ""} alt={name ?? ""} />
-      <div>{name}</div>
-      <div>{email}</div>
+    <div className="border-[1px] border-gray-300 rounded-lg py-6 px-12  dark:text-white flex flex-col items-center gap-1">
+      <Image className="rounded-full" height={100} width={100} src={image ?? ""} alt={name ?? ""} />
+      <p>{name}</p>
+      <p>{email}</p>
     </div>
   )
 }
